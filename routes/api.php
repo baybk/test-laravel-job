@@ -29,15 +29,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::post('register', [RegisterController::class, 'register'])->name('register');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('dashboard', [DashboardController::class, 'dashboard']);
-
-Route::get('profile', [UserController::class, 'profile']);
-Route::post('profile/update', [UserController::class, 'updateProfile']);
-
-Route::get('users/lists', [UserController::class, 'lists'])->name('users.lists');
-Route::resource('users', UserController::class);
-Route::resource('categories', CategoryController::class);
-Route::resource('posts', PostController::class);
-Route::resource('tags', TagController::class);
-Route::resource('comments', CommentController::class);
