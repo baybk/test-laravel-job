@@ -1,0 +1,43 @@
+<?php
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('register', [RegisterController::class, 'register'])->name('register');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('dashboard', [DashboardController::class, 'dashboard']);
+
+Route::get('profile', [UserController::class, 'profile']);
+Route::post('profile/update', [UserController::class, 'updateProfile']);
+
+Route::get('users/lists', [UserController::class, 'lists'])->name('users.lists');
+Route::resource('users', UserController::class);
+Route::resource('categories', CategoryController::class);
+Route::resource('posts', PostController::class);
+Route::resource('tags', TagController::class);
+Route::resource('comments', CommentController::class);
