@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Web\LoginController;
+use App\Http\Controllers\Web\MyrecordController;
+use App\Http\Controllers\Web\RecommendedController;
+use App\Http\Controllers\Web\ToppageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Website route
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/toppage', [ToppageController::class, 'index'])->name('toppage');
+
+Route::get('/', [RecommendedController::class, 'index'])->name('recommended');
+
+Route::get('/myrecord', [MyrecordController::class, 'index'])->name('myrecord');

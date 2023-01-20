@@ -9,7 +9,7 @@ use App\Packages\Papagroup\L8core\Src\Criteria\WithRelationsCriteria;
 use App\Repositories\UserRepository;
 use App\Services\Action;
 
-class GetListUserAction extends Action
+class GetIndexInfo extends Action
 {
     protected $repository;
 

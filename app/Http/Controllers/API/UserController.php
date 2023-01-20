@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Services\Web\GetListUserAction;
 use Symfony\Component\HttpFoundation\Response as ResponseCode;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
