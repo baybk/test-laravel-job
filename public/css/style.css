@@ -85,6 +85,10 @@ body {
   color: #FFCC21 !important;
 }
 
+.table td {
+  font-size: 0.9rem;
+}
+
 @media (max-width: 992px) {
   #showcase h1 {
     font-size: 4rem; } }

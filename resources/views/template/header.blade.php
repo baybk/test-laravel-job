@@ -30,6 +30,13 @@
               <a href="{{ route('recommended') }}" class="nav-link text-white">Recommended</a>
               @endif
             </li>
+            <li class="nav-item">
+              @if(Route::is('databaseDescription'))
+              <a href="{{ route('databaseDescription') }}" class="nav-link link-active">Database description</a>
+              @else
+              <a href="{{ route('databaseDescription') }}" class="nav-link text-white">Database description</a>
+              @endif
+            </li>
             @guest
               <li class="nav-item">
                 <a href="{{ route('myrecord') }}" class="nav-link text-white" data-toggle="modal" data-target="#loginModal">Login</a>

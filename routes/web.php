@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\DatabaseDescriptionController;
 use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\MyrecordController;
 use App\Http\Controllers\Web\RecommendedController;
@@ -26,3 +27,5 @@ Route::get('/toppage', [ToppageController::class, 'index'])->name('toppage');
 Route::get('/', [RecommendedController::class, 'index'])->name('recommended');
 
 Route::get('/myrecord', [MyrecordController::class, 'index'])->name('myrecord');
+
+Route::get('/database-description', [DatabaseDescriptionController::class, 'index'])->name('databaseDescription');
