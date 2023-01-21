@@ -130,6 +130,38 @@
                 </tbody>
             </table>
 
+            <div class="text-center py-1">Table: <span class="text-primary">meal_dish</span></div>
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th style="width:20%">Column name</th>
+                        <th style="width:20%">Value Type</th>
+                        <th style="width:30%">Rules</th>
+                        <th style="width:30%">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>number</td>
+                        <td>primary key</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>meal_id</td>
+                        <td>number</td>
+                        <td><strong>FK to meals record</strong></td>
+                        <td>To know which meal</td>
+                    </tr>
+                    <tr>
+                        <td>dish_id</td>
+                        <td>number</td>
+                        <td><strong>FK to dishes record</strong></td>
+                        <td>To know which dish</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div class="text-center py-1">Table: <span class="text-primary">body_records</span></div>
             <table class="table table-bordered table-sm">
                 <thead>

@@ -21,9 +21,5 @@ class DatabaseSeeder extends Seeder
         Artisan::call('storage:link');
         
         $this->call(UserTableSeeder::class);
-        $this->call(CategorySeeder::class);
-        $this->call(PostSeeder::class);
-        $this->call(TagSeeder::class);
-        $this->call(CommentSeeder::class);
     }
 }
