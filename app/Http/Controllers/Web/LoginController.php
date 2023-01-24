@@ -16,13 +16,13 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
         $credentials = $request->except(['_token']);
 
-        $user = User::where('name',$request->name)->first();
+        $user = User::where('email',$request->email)->first();
 
         if (auth()->attempt($credentials)) {
 
