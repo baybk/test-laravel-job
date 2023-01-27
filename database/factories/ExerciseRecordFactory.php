@@ -19,7 +19,7 @@ class ExerciseRecordFactory extends Factory
             'kcal' => 20,
             'minutes' => 10,
             'user_id' => 1,
-            'date_at' => $this->faker->dateTimeBetween('-2 weeks')
+            'date_at' => $this->faker->dateTimeBetween('-4 days')
         ];
     }
 }

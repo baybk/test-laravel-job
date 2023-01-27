@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a9bee3cd09ef2438768828d82c95aaf",
+    "content-hash": "528a993d965e1d8ce50dd63c9109fd66",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1146,6 +1146,53 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "haruncpi/laravel-query-log",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/haruncpi/laravel-query-log.git",
+                "reference": "d8d2cc243e449f235c945cc651a8858cb5951616"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/haruncpi/laravel-query-log/zipball/d8d2cc243e449f235c945cc651a8858cb5951616",
+                "reference": "d8d2cc243e449f235c945cc651a8858cb5951616",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Haruncpi\\QueryLog\\QueryLogServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Haruncpi\\QueryLog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "cc-by-4.0"
+            ],
+            "authors": [
+                {
+                    "name": "Md.Harun-Ur-Rashid",
+                    "email": "harun.cox@gmail.com"
+                }
+            ],
+            "description": "Log your all laravel sql query",
+            "support": {
+                "issues": "https://github.com/haruncpi/laravel-query-log/issues",
+                "source": "https://github.com/haruncpi/laravel-query-log/tree/v1.0.1"
+            },
+            "time": "2022-09-22T04:22:10+00:00"
         },
         {
             "name": "laravel/framework",

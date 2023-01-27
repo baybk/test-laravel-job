@@ -16,7 +16,7 @@ class RecommendedFactory extends Factory
         return [
             'title' => $this->faker->realText(50),
             'content' => $this->faker->realText(100),
-            'datetime_at' => $this->faker->dateTimeBetween('-2 weeks')
+            'datetime_at' => $this->faker->dateTimeBetween('-4 days')
         ];
     }
 }

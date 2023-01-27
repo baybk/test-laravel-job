@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Meal;
+use App\Models\Dish;
 use App\Models\MealDish;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class MealSeeder extends Seeder
@@ -15,14 +17,24 @@ class MealSeeder extends Seeder
      */
     public function run()
     {        
-        for ($i = 1; $i <= MAX_NUMB_SEED; $i++) {
-            $meal = Meal::factory()->create([
-                'id' => $i
-            ]);
-            MealDish::create([
-                'meal_id' => $i,
-                'dish_id' => $i
-            ]);
+        for ($i = 3; $i >= 0; $i--) {
+            $now = Carbon::now();
+            $now->subDays($i);
+            
+            for ($j = 0; $j < 4; $j++) {
+                $type = $j % 4;
+                $meal = Meal::factory()->create([
+                    'datetime_at' => $now,
+                    'type' => $type + 1
+                ]);
+                $dish = Dish::factory()->create([
+                ]);
+                MealDish::create([
+                    'meal_id' => $meal->id,
+                    'dish_id' => $dish->id
+                ]);
+            }
         }
+            
     }
 }

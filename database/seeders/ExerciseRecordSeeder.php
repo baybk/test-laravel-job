@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\BodyRecord;
 use App\Models\ExerciseRecord;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class ExerciseRecordSeeder extends Seeder
@@ -14,10 +16,15 @@ class ExerciseRecordSeeder extends Seeder
      */
     public function run()
     {        
-        for ($i = 1; $i <= MAX_NUMB_SEED; $i++) {
-            ExerciseRecord::factory()->create([
-                'id' => $i
-            ]);
+        for ($i = 3; $i >= 0; $i--) {
+            $now = Carbon::now();
+            $now->addDays($i);
+            
+            for ($j = 0; $j < 4; $j++) {
+                ExerciseRecord::factory()->create([
+                    'date_at' => $now
+                ]);
+            }
         }
     }
 }

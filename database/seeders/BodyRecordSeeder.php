@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\BodyRecord;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class BodyRecordSeeder extends Seeder
@@ -13,11 +14,16 @@ class BodyRecordSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        
-        for ($i = 1; $i <= MAX_NUMB_SEED; $i++) {
-            BodyRecord::factory()->create([
-                'id' => $i
-            ]);
+    {   
+        for ($i = 3; $i >= 0; $i--) {
+            $now = Carbon::now();
+            $now->subDays($i);
+            
+            for ($j = 0; $j < 4; $j++) {
+                BodyRecord::factory()->create([
+                    'date_at' => $now
+                ]);
+            }
         }
     }
 }

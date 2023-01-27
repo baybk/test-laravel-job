@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         Artisan::call('storage:link');
         
         $this->call(UserTableSeeder::class);
-        $this->call(DishSeeder::class);
+        // $this->call(DishSeeder::class);
         $this->call(MealSeeder::class);
         $this->call(BodyRecordSeeder::class);
         $this->call(ExerciseRecordSeeder::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Services\Web\TopPage\GetIndexInfoAction;
 use Illuminate\Http\Request;
 
 class ToppageController extends Controller
@@ -14,6 +15,8 @@ class ToppageController extends Controller
 
     public function index()
     {
-        return view('toppage');
+        $rdata = resolve(GetIndexInfoAction::class)->run([]);
+        $data =  $this->sendSuccessWithoutMessage($rdata, 200, true);
+        return view('toppage', compact('data'));
     }
 }

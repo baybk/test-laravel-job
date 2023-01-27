@@ -20,34 +20,48 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function sendSuccess($result, $message, $code = 200)
+    public function sendSuccess($result, $message, $code = 200, $isPureData = false)
     {
+        $data = [
+            'data' => $result
+        ];
         $response = array_merge(
             [
                 'success' => true,
                 'message' => $message,
+                'status_code' => $code
             ],
-            $result
+            $data
         );
         $responseCode = 200;
         if ($code) {
             $responseCode = in_array($code, self::LIST_SUCCESS_CODE) ? $code : $responseCode;
         }
+        if ($isPureData) {
+            return $response;
+        }
         return response()->json($response, $responseCode);
     }
 
-    public function sendSuccessWithoutMessage($result, $code = 200)
+    public function sendSuccessWithoutMessage($result, $code = 200, $isPureData = false)
     {
+        $data = [
+            'data' => $result
+        ];
         $response = array_merge(
             [
                 'success' => true,
                 'message' => '',
+                'status_code' => $code
             ],
-            $result
+            $data
         );
         $responseCode = 200;
         if ($code) {
             $responseCode = in_array($code, self::LIST_SUCCESS_CODE) ? $code : $responseCode;
+        }
+        if ($isPureData) {
+            return $response;
         }
         return response()->json($response, $responseCode);
     }

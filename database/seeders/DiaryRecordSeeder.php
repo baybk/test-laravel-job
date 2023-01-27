@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\DiaryRecord;
+use App\Models\ExerciseRecord;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DiaryRecordSeeder extends Seeder
@@ -14,10 +16,15 @@ class DiaryRecordSeeder extends Seeder
      */
     public function run()
     {        
-        for ($i = 1; $i <= MAX_NUMB_SEED; $i++) {
-            DiaryRecord::factory()->create([
-                'id' => $i
-            ]);
+        for ($i = 3; $i >= 0; $i--) {
+            $now = Carbon::now();
+            $now->subDays($i);
+            
+            for ($j = 0; $j < 4; $j++) {
+                DiaryRecord::factory()->create([
+                    'datetime_at' => $now
+                ]);
+            }
         }
     }
 }

@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Services\Web;
+namespace App\Services\Web\Meal;
 
+use App\Filters\DateTimeAtFilter;
 use App\Filters\FreewordNameFilter;
+use App\Filters\TypeFilter;
+use App\Filters\UserIdFilter;
+use App\Http\Resources\MealResource;
 use App\Packages\Papagroup\L8core\Src\Criteria\FilterCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\OrderCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\WithRelationsCriteria;
-use App\Repositories\UserRepository;
+use App\Repositories\MealRepository;
 use App\Services\Action;
 
-class GetIndexInfo extends Action
+class ListMealAction extends Action
 {
     protected $repository;
 
-    public function __construct(UserRepository $repository)
+    public function __construct(MealRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -28,15 +32,12 @@ class GetIndexInfo extends Action
                 ->pushCriteria(new WithRelationsCriteria($with, $this->repository->allowRelations()))
                 ->pushCriteria(new FilterCriteria($data, $this->allowFilters()))
                 ->pushCriteria(new OrderCriteria($order, $this->allowOrderableFields()));
-
-            return [
-                'users' => !empty($data['limit'])
-                    ? $this->repository->paginate($data['limit'])
-                    : $this->repository->all(),
-                'employee_update' => $this->repository
-                    ->pushCriteria(new FilterCriteria($data, $this->allowFilters()))
-                    ->pushCriteria(new OrderCriteria('-updated_at', ['updated_at']))->first()
-            ];
+            $meals = !empty($data['limit'])
+                ? $this->repository->paginate($data['limit'])
+                : $this->repository->all();
+            $meals = MealResource::collection($meals)->toArray(null);
+            
+            return $meals;
         } catch (\Exception $e) {
             throw $e;
         }
@@ -45,16 +46,18 @@ class GetIndexInfo extends Action
     private function allowFilters()
     {
         return [
-            'name' => FreewordNameFilter::class,
+            'user_id' => UserIdFilter::class,
+            'datetime_at' => DateTimeAtFilter::class,
+            'type' => TypeFilter::class
         ];
     }
 
     private function allowOrderableFields()
     {
         return [
-            'id',
-            'name',
-            'created_at'
+            'user_id',
+            'datetime_at',
+            'type'
         ];
     }
 }
