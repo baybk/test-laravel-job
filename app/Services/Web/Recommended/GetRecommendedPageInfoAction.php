@@ -14,7 +14,7 @@ class GetRecommendedPageInfoAction extends Action
 
     }
 
-    public function run($userId, $data)
+    public function run($data)
     {
         try {
             $dayNow = Carbon::now();

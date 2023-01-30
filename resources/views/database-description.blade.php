@@ -2,6 +2,8 @@
 
 @section('content')
     <section class="py-4">
+        <h1 class="text-center display-5">Summarize Database</h1>
+
         <div class="container">
             <div class="text-center py-1">Table: <span class="text-primary">users</span></div>
             <table class="table table-bordered table-sm">

@@ -23,6 +23,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              @if(Route::is('databaseDescription'))
+              <a href="{{ route('databaseDescription') }}" class="nav-link link-active">Summarize Database</a>
+              @else
+              <a href="{{ route('databaseDescription') }}" class="nav-link text-white">Summarize Database</a>
+              @endif
+            </li>
+
+            <li class="nav-item">
+              @if(Route::is('apiDescription'))
+              <a href="{{ route('apiDescription') }}" class="nav-link link-active">Summarize Apis</a>
+              @else
+              <a href="{{ route('apiDescription') }}" class="nav-link text-white">Summarize Apis</a>
+              @endif
+            </li>
+
             <li class="nav-item">
               @if(Route::is('recommended'))
               <a href="{{ route('recommended') }}" class="nav-link link-active">Recommended</a>
@@ -30,18 +47,20 @@
               <a href="{{ route('recommended') }}" class="nav-link text-white">Recommended</a>
               @endif
             </li>
-            <li class="nav-item">
-              @if(Route::is('databaseDescription'))
-              <a href="{{ route('databaseDescription') }}" class="nav-link link-active">Database description</a>
-              @else
-              <a href="{{ route('databaseDescription') }}" class="nav-link text-white">Database description</a>
-              @endif
-            </li>
+            
             @guest
               <li class="nav-item">
                 <a href="{{ route('myrecord') }}" class="nav-link text-white" data-toggle="modal" data-target="#loginModal">Login</a>
               </li>
             @else
+              <li class="nav-item">
+                @if(Route::is('toppage'))
+                <a href="{{ route('toppage') }}" class="nav-link link-active">Top Page</a>
+                @else
+                <a href="{{ route('toppage') }}" class="nav-link text-white">Top Page</a>
+                @endif
+              </li>
+
               <li class="nav-item">
                 @if(Route::is('myrecord'))
                 <a href="{{ route('myrecord') }}" class="nav-link link-active">My Record</a>

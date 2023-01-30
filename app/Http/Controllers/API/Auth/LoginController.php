@@ -20,10 +20,11 @@ class LoginController extends Controller
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            $user->api_token =  $user->createToken('APPLICATION')->accessToken;
+            $access_token =  $user->createToken('APPLICATION')->accessToken;
             return $this->sendSuccess(
                 [
-                    'user' => $user
+                    'user' => $user,
+                    'access_token' => $access_token
                 ],
                 __('auth.login_success')
             );

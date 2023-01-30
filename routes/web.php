@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\ApiDescriptionController;
 use App\Http\Controllers\Web\DatabaseDescriptionController;
 use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\MyrecordController;
@@ -32,3 +33,4 @@ Route::get('/', [RecommendedController::class, 'index'])->name('recommended');
 Route::get('/myrecord', [MyrecordController::class, 'index'])->name('myrecord')->middleware('auth');
 
 Route::get('/database-description', [DatabaseDescriptionController::class, 'index'])->name('databaseDescription');
+Route::get('/api-description', [ApiDescriptionController::class, 'index'])->name('apiDescription');

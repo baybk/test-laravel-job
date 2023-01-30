@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Services\Web\Recommended\GetRecommendedPageInfoAction;
@@ -16,9 +16,6 @@ class RecommendedController extends Controller
     public function index(Request $request)
     {
         $rdata = resolve(GetRecommendedPageInfoAction::class)->run([]);
-        $rdata =  $this->sendSuccessWithoutMessage($rdata, 200, true);
-        $data = $rdata['data'];
-        // dd($data);
-        return view('recommended', compact('data'));
+        return $this->sendSuccessWithoutMessage($rdata, 200);
     }
 }
