@@ -61,65 +61,25 @@
     <div class="container">
     <div class="row">
 
+        @foreach($data['recommended_list'] as $recommended)
         <div class="col-sm-6 col-md-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-yellow px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>2021.05.17 23:20</small>
+            <div class="card">
+                <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
+                <div class="card-img-overlay">
+                    <div class="card-text bg-yellow px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
+                        <small>{{ $recommended['datetime_at'] }}</small>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <div class="jp-text-recom">魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…</div>
-            <div class="jp-text-recom text-primary">#DHA</div>
-        </div>
-        </div>
+            <div>
+                <div class="jp-text-recom">{{ $recommended['title'] }}</div>
 
-        <div class="col-sm-6 col-md-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-yellow px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>2021.05.17 23:20</small>
-                </div>
+                @foreach($recommended['tags'] as $tag)
+                <div class="jp-text-recom text-primary">#{{ $tag['name'] }}</div>
+                @endforeach
             </div>
         </div>
-        <div>
-            <div class="jp-text-recom">魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…</div>
-            <div class="jp-text-recom text-primary">#DHA</div>
-        </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-yellow px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>2021.05.17 23:20</small>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="jp-text-recom">魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…</div>
-            <div class="jp-text-recom text-primary">#DHA</div>
-        </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-yellow px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>2021.05.17 23:20</small>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="jp-text-recom">魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…</div>
-            <div class="jp-text-recom text-primary">#DHA</div>
-        </div>
-        </div>
+        @endforeach
 
     </div>
 

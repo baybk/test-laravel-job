@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Services\Web\Meal;
+namespace App\Services\Web\Recommended;
 
 use App\Filters\DateTimeAtFilter;
 use App\Filters\FreewordNameFilter;
 use App\Filters\TypeFilter;
 use App\Filters\UserIdFilter;
-use App\Http\Resources\MealResource;
+use App\Http\Resources\RecommendedResource;
 use App\Packages\Papagroup\L8core\Src\Criteria\FilterCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\OrderCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\WithRelationsCriteria;
-use App\Repositories\MealRepository;
+use App\Repositories\RecommendedRepository;
 use App\Services\Action;
 
-class ListMealAction extends Action
+class ListRecommendedAction extends Action
 {
     protected $repository;
 
-    public function __construct(MealRepository $repository)
+    public function __construct(RecommendedRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -32,12 +32,12 @@ class ListMealAction extends Action
                 ->pushCriteria(new WithRelationsCriteria($with, $this->repository->allowRelations()))
                 ->pushCriteria(new FilterCriteria($data, $this->allowFilters()))
                 ->pushCriteria(new OrderCriteria($order, $this->allowOrderableFields()));
-            $meals = !empty($data['limit'])
+            $records = !empty($data['limit'])
                 ? $this->repository->paginate($data['limit'])
                 : $this->repository->all();
-            $meals = MealResource::collection($meals)->toArray(null);
+            $records = RecommendedResource::collection($records)->toArray(null);
             
-            return $meals;
+            return $records;
         } catch (\Exception $e) {
             throw $e;
         }
@@ -46,9 +46,9 @@ class ListMealAction extends Action
     private function allowFilters()
     {
         return [
-            'user_id' => UserIdFilter::class,
             'datetime_at' => DateTimeAtFilter::class,
-            'type' => TypeFilter::class
+            'type' => TypeFilter::class,
+            'title' => FreewordNameFilter::class
         ];
     }
 
@@ -56,7 +56,6 @@ class ListMealAction extends Action
     {
         return [
             'id',
-            'user_id',
             'datetime_at',
             'type'
         ];

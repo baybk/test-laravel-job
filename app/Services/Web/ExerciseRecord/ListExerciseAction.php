@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Services\Web\Meal;
+namespace App\Services\Web\ExerciseRecord;
 
 use App\Filters\DateTimeAtFilter;
 use App\Filters\FreewordNameFilter;
 use App\Filters\TypeFilter;
 use App\Filters\UserIdFilter;
-use App\Http\Resources\MealResource;
+use App\Http\Resources\ExerciseRecordResource;
 use App\Packages\Papagroup\L8core\Src\Criteria\FilterCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\OrderCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\WithRelationsCriteria;
-use App\Repositories\MealRepository;
+use App\Repositories\ExerciseRecordRepository;
 use App\Services\Action;
 
-class ListMealAction extends Action
+class ListExerciseAction extends Action
 {
     protected $repository;
 
-    public function __construct(MealRepository $repository)
+    public function __construct(ExerciseRecordRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -32,12 +32,12 @@ class ListMealAction extends Action
                 ->pushCriteria(new WithRelationsCriteria($with, $this->repository->allowRelations()))
                 ->pushCriteria(new FilterCriteria($data, $this->allowFilters()))
                 ->pushCriteria(new OrderCriteria($order, $this->allowOrderableFields()));
-            $meals = !empty($data['limit'])
+            $records = !empty($data['limit'])
                 ? $this->repository->paginate($data['limit'])
                 : $this->repository->all();
-            $meals = MealResource::collection($meals)->toArray(null);
+            $records = ExerciseRecordResource::collection($records)->toArray(null);
             
-            return $meals;
+            return $records;
         } catch (\Exception $e) {
             throw $e;
         }
@@ -47,8 +47,9 @@ class ListMealAction extends Action
     {
         return [
             'user_id' => UserIdFilter::class,
-            'datetime_at' => DateTimeAtFilter::class,
-            'type' => TypeFilter::class
+            'date_at' => DateTimeAtFilter::class,
+            'type' => TypeFilter::class,
+            'name' => FreewordNameFilter::class,
         ];
     }
 

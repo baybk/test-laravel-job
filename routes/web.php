@@ -29,6 +29,6 @@ Route::get('/toppage', [ToppageController::class, 'index'])->name('toppage')->mi
 
 Route::get('/', [RecommendedController::class, 'index'])->name('recommended');
 
-Route::get('/myrecord', [MyrecordController::class, 'index'])->name('myrecord');
+Route::get('/myrecord', [MyrecordController::class, 'index'])->name('myrecord')->middleware('auth');
 
 Route::get('/database-description', [DatabaseDescriptionController::class, 'index'])->name('databaseDescription');

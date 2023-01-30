@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Services\Web\Meal;
+namespace App\Services\Web\DiaryRecord;
 
 use App\Filters\DateTimeAtFilter;
 use App\Filters\FreewordNameFilter;
 use App\Filters\TypeFilter;
 use App\Filters\UserIdFilter;
-use App\Http\Resources\MealResource;
+use App\Http\Resources\DiaryRecordResource;
 use App\Packages\Papagroup\L8core\Src\Criteria\FilterCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\OrderCriteria;
 use App\Packages\Papagroup\L8core\Src\Criteria\WithRelationsCriteria;
-use App\Repositories\MealRepository;
+use App\Repositories\DiaryRecordRepository;
 use App\Services\Action;
 
-class ListMealAction extends Action
+class ListDiaryAction extends Action
 {
     protected $repository;
 
-    public function __construct(MealRepository $repository)
+    public function __construct(DiaryRecordRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -35,7 +35,7 @@ class ListMealAction extends Action
             $meals = !empty($data['limit'])
                 ? $this->repository->paginate($data['limit'])
                 : $this->repository->all();
-            $meals = MealResource::collection($meals)->toArray(null);
+            $meals = DiaryRecordResource::collection($meals)->toArray(null);
             
             return $meals;
         } catch (\Exception $e) {
@@ -48,7 +48,8 @@ class ListMealAction extends Action
         return [
             'user_id' => UserIdFilter::class,
             'datetime_at' => DateTimeAtFilter::class,
-            'type' => TypeFilter::class
+            'type' => TypeFilter::class,
+            'diary' => FreewordNameFilter::class,
         ];
     }
 

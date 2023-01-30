@@ -78,6 +78,7 @@ body {
   color: #fff; }
 
 .diary-box {
+  min-height: 170px;
   border: 1px solid #a5a4a4;
   padding: 10px; }
 

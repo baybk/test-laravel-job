@@ -19,6 +19,7 @@ class CreateRecommendedTable extends Migration
 
             $table->string('title');
             $table->text('content')->nullable();
+            $table->unsignedSmallInteger('type')->comment('1=column 2=diet 3=beauty 4=health');
             $table->dateTime('datetime_at');
             $table->string('image')->nullable();
         });

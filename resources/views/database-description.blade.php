@@ -357,6 +357,12 @@
                         <td>Content of the recommended</td>
                     </tr>
                     <tr>
+                        <td>type</td>
+                        <td>number</td>
+                        <td></td>
+                        <td>Type of the recommended (1=column 2=diet 3=beauty 4=health)</td>
+                    </tr>
+                    <tr>
                         <td>image</td>
                         <td>text in db + file in storage</td>
                         <td>nullable</td>

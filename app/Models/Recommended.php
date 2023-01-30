@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Recommended extends Model
 {
     use HasFactory;
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'recommended_tags', 'recommended_id', 'tag_id');
+    }
 }

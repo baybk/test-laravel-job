@@ -11,9 +11,9 @@ class GetIndexInfoAction extends Action
 {
     protected $repository;
 
-    public function __construct(UserRepository $repository)
+    public function __construct()
     {
-        $this->repository = $repository;
+
     }
 
     public function run($userId, $data)

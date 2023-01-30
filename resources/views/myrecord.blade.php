@@ -69,42 +69,16 @@
         <div class="table-exercise table-responsive">
             <table class="table table-custom-dark">
             <tbody>
+
+                @foreach($data['exercise_list'] as $exerciseItem)
                 <tr>
                     <th>&#9900;</th>
-                    <td>Make breakfast (Stand up)</td>
-                    <td class="text-yellow">26kcal</td>
-                    <td class="text-yellow">10 minutes</td>
+                    <td>{{ $exerciseItem['name'] }}</td>
+                    <td class="text-yellow">{{ $exerciseItem['kcal'] }} kcal</td>
+                    <td class="text-yellow">{{ $exerciseItem['minutes'] }} minutes</td>
                 </tr>
-                <tr>
-                    <th>&#9900;</th>
-                    <td>Make breakfast (Stand up)</td>
-                    <td class="text-yellow">26kcal</td>
-                    <td class="text-yellow">10 minutes</td>
-                </tr>
-                <tr>
-                    <th>&#9900;</th>
-                    <td>Make breakfast (Stand up)</td>
-                    <td class="text-yellow">26kcal</td>
-                    <td class="text-yellow">10 minutes</td>
-                </tr>
-                <tr>
-                <th>&#9900;</th>
-                <td>Make breakfast (Stand up)</td>
-                <td class="text-yellow">26kcal</td>
-                <td class="text-yellow">10 minutes</td>
-                </tr>
-                <tr>
-                <th>&#9900;</th>
-                <td>Make breakfast (Stand up)</td>
-                <td class="text-yellow">26kcal</td>
-                <td class="text-yellow">10 minutes</td>
-                </tr>
-                <tr>
-                <th>&#9900;</th>
-                <td>Make breakfast (Stand up)</td>
-                <td class="text-yellow">26kcal</td>
-                <td class="text-yellow">10 minutes</td>
-                </tr>
+                @endforeach
+
             </tbody>
             </table>
         </div>
@@ -115,37 +89,16 @@
         <div class="container">
         <div>MY DIARY</div>
         <div class="row mb-3">
-            <div class="col-sm-3">
-            <div class="diary-box">
-                <div class="medium">05.21.2022</div>
-                <div class="medium">12:23</div>
-                <div class="small text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde atque, dolorem possimus sequi id nesciunt error cum doloribus obcaecati beatae!</div>
-            </div>
-            </div>
 
-            <div class="col-sm-3">
-            <div class="diary-box">
-                <div class="medium">05.21.2022</div>
-                <div class="medium">12:23</div>
-                <div class="small text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde atque, dolorem possimus sequi id nesciunt error cum doloribus obcaecati beatae!</div>
+            @foreach($data['diary_list'] as $diaryItem)
+            <div class="col-sm-3 mb-2">
+                <div class="diary-box">
+                    <div class="medium">{{ $diaryItem['date_at_formatted'] }}</div>
+                    <div class="medium">{{ $diaryItem['time_at_formatted'] }}</div>
+                    <div class="small text-justify">{{ $diaryItem['diary'] }}</div>
+                </div>
             </div>
-            </div>
-
-            <div class="col-sm-3">
-            <div class="diary-box">
-                <div class="medium">05.21.2022</div>
-                <div class="medium">12:23</div>
-                <div class="small text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde atque, dolorem possimus sequi id nesciunt error cum doloribus obcaecati beatae!</div>
-            </div>
-            </div>
-
-            <div class="col-sm-3">
-            <div class="diary-box">
-                <div class="medium">05.21.2022</div>
-                <div class="medium">12:23</div>
-                <div class="small text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde atque, dolorem possimus sequi id nesciunt error cum doloribus obcaecati beatae!</div>
-            </div>
-            </div>
+            @endforeach
 
         </div>
 

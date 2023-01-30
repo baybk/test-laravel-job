@@ -16,8 +16,8 @@ class ExerciseRecordFactory extends Factory
         return [
             'name' => $this->faker->realText(50),
             'description' => $this->faker->realText(100),
-            'kcal' => 20,
-            'minutes' => 10,
+            'kcal' => $this->faker->numberBetween(5, 50),
+            'minutes' => $this->faker->numberBetween(1, 20),
             'user_id' => 2,
             'date_at' => $this->faker->dateTimeBetween('-4 days')
         ];
