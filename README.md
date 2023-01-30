@@ -1,17 +1,17 @@
-## Build project guide
-Do please below step after you checkout the repo
+# How to build this Laravel project ?
+You can build this project base on Docker.
 
-1. Copy content of `.env.example` to `.env` file
-2. Config `.env` file to be fit with the environment that using for the project (prefer to use local database with mysql & local server at this time) _ such as: DB_DATABASE, DB_USERNAME, DB_PASSWORD, MIX_APP_URL ..
-3. In the root folder of the project, call: `composer install && composer update`, to add the dependency libs
-4. Generate the key by command: `php artisan key:generate`
-5. Create the database and migrate: `php artisan migrate`
-6. Create storage link by command: `php artisan storage:link`
-7. Install dependencies of front-end: `npm install`
-8. Load back-end helpers functions, run: `composer dump-autoload` 
-9. Run the server by command: `php artisan serve` , and test with the browser.
-10. Call "npm run watch" to rebuild js
+## Prerequisites
+1. Firstly, you need to install Docker
+2. You may be config Docker File Sharing, to include the path of project folder
 
-## Create sample data for web
-1. (In terminal) Run command: `php artisan db:seed --class=DatabaseSeeder`
-2. Refresh website on browser to see the result
+## Build
+1. Unzip source code. Then `cd` to project folder `arent-test-proj`
+2. Copy content of `.env.example` to `.env` file
+3. Run command: `docker-compose up -d --build`
+4. Run command: `docker-compose run --rm app composer install`, to install the dependencies ...
+  Note: If any errors appear, consider to run: `docker-compose run --rm app composer update`
+
+5. Create the database and migrate: `docker-compose run --rm app php artisan migrate`
+6. Make sample data to test: `docker-compose run --rm app php artisan db:seed --class=DatabaseSeeder`
+7. Access link `http://localhost:8000`, to check the website
