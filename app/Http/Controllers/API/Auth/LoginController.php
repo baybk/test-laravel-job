@@ -16,6 +16,32 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /** 
+        * @OA\Post( 
+            * path="/api/login",
+            * summary="Sign in",
+            * description="Login by email, password",
+            * operationId="authLogin",
+            * tags={"auth"},
+            * @OA\RequestBody(
+                * required=true,
+                * description="Pass user credentials",
+                * @OA\JsonContent(
+                    * required={"email","password"},
+                    * @OA\Property(property="email", type="string", format="email", example="user@gmail.com"),
+                    * @OA\Property(property="password", type="string", format="password", example="123456"),
+                * ),
+            * ),
+
+            * @OA\Response(
+                * response=401,
+                * description="Wrong credentials response",
+                * @OA\JsonContent( 
+                    * @OA\Property(property="message", type="string", example="Unauthenticated") 
+                * )
+            * ) 
+        * ) 
+    */
     public function login(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
@@ -32,9 +58,9 @@ class LoginController extends Controller
 
         return $this->sendError(
             [
-                'error' => __('auth.un_authenticated')
             ],
-            __('auth.un_authenticated')
+            __('auth.un_authenticated'),
+            401
         );
     }
 

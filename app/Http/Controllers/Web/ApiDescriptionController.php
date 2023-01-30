@@ -14,6 +14,7 @@ class ApiDescriptionController extends Controller
 
     public function index()
     {
-        return view('api-description');
+        // return view('api-description');
+        return redirect('/api-docs');
     }
 }

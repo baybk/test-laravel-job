@@ -34,9 +34,9 @@
 
             <li class="nav-item">
               @if(Route::is('apiDescription'))
-              <a href="{{ route('apiDescription') }}" class="nav-link link-active">Summarize Apis</a>
+              <a href="{{ route('apiDescription') }}" class="nav-link link-active" target="_blank">Api Docs</a>
               @else
-              <a href="{{ route('apiDescription') }}" class="nav-link text-white">Summarize Apis</a>
+              <a href="{{ route('apiDescription') }}" class="nav-link text-white" target="_blank">Apis Docs</a>
               @endif
             </li>
 
