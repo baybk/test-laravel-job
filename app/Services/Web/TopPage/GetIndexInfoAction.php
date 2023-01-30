@@ -6,6 +6,7 @@ use App\Repositories\UserRepository;
 use App\Services\Action;
 use App\Services\Web\Meal\ListMealAction;
 use Carbon\Carbon;
+use App\Services\Web\BodyRecord\GroupBodyRecordByMonthAction;
 
 class GetIndexInfoAction extends Action
 {
@@ -39,11 +40,14 @@ class GetIndexInfoAction extends Action
             ];
             $mealsData = resolve(ListMealAction::class)->run($filterData);
 
+            $bodyRecords = resolve(GroupBodyRecordByMonthAction::class)->run($userId, []);
+
             $dayNowFormat = $dayNow->format('m/d');
             $data = [
                 "day_now" => $dayNowFormat,
                 "day_now_percentage" => $percentage,
-                "meals_data" => $mealsData
+                "meals_data" => $mealsData,
+                "body_record_list" => $bodyRecords
             ];
 
             return $data;
