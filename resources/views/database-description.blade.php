@@ -24,7 +24,7 @@
                         <td>29/1/2023</td>
                         <td>Setup Laravel project, database and back-end</td>
                         <td>8h</td>
-                        <td>In some Apis, I have not return data for chart Weight/Fat Percentage yet</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>30/1/2023</td>

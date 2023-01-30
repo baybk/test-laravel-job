@@ -17,6 +17,17 @@ class BodyRecordSeeder extends Seeder
     {   
         for ($i = 3; $i >= 0; $i--) {
             $now = Carbon::now();
+            $now->subDays(30 + $i);
+            
+            for ($j = 0; $j < 4; $j++) {
+                BodyRecord::factory()->create([
+                    'date_at' => $now
+                ]);
+            }
+        }
+
+        for ($i = 3; $i >= 0; $i--) {
+            $now = Carbon::now();
             $now->subDays($i);
             
             for ($j = 0; $j < 4; $j++) {

@@ -4,6 +4,7 @@ namespace App\Services\Web\MyRecordpage;
 
 use App\Repositories\UserRepository;
 use App\Services\Action;
+use App\Services\Web\BodyRecord\GroupBodyRecordByMonthAction;
 use App\Services\Web\DiaryRecord\ListDiaryAction;
 use App\Services\Web\ExerciseRecord\ListExerciseAction;
 use App\Services\Web\Meal\ListMealAction;
@@ -36,10 +37,13 @@ class GetMyRecordPageInfoAction extends Action
             ];
             $diariesData = resolve(ListDiaryAction::class)->run($filterDiaryData);
 
+            $bodyRecords = resolve(GroupBodyRecordByMonthAction::class)->run($userId, []);
+
             $data = [
                 "day_now" => $dayNowFormat,
                 "exercise_list" => $exercisesData,
-                "diary_list" => $diariesData
+                "diary_list" => $diariesData,
+                "body_record_list" => $bodyRecords
             ];
 
             return $data;

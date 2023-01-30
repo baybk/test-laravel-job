@@ -65,6 +65,28 @@
 
     <section id="my-exercise" class="py-4">
         <div class="container">
+        <div>MY BODY RECORD</div>
+        <div class="table-exercise table-responsive">
+            <table class="table table-custom-dark">
+            <tbody>
+
+                @foreach($data['body_record_list'] as $bodyRecordItem)
+                <tr>
+                    <th>&#9900;</th>
+                    <td>{{ $bodyRecordItem['month_at_formatted'] }}</td>
+                    <td class="text-yellow">{{ $bodyRecordItem['weight'] }} kg</td>
+                    <td class="text-yellow">{{ $bodyRecordItem['fat_percentage'] }} %</td>
+                </tr>
+                @endforeach
+
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
+
+    <section id="my-exercise" class="py-4">
+        <div class="container">
         <div>MY EXERCISE</div>
         <div class="table-exercise table-responsive">
             <table class="table table-custom-dark">
