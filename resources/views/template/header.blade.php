@@ -26,9 +26,9 @@
 
             <li class="nav-item">
               @if(Route::is('databaseDescription'))
-              <a href="{{ route('databaseDescription') }}" class="nav-link link-active">Summarize Database</a>
+              <a href="{{ route('databaseDescription') }}" class="nav-link link-active">Summarize Database/API</a>
               @else
-              <a href="{{ route('databaseDescription') }}" class="nav-link text-white">Summarize Database</a>
+              <a href="{{ route('databaseDescription') }}" class="nav-link text-white">Summarize Database/API</a>
               @endif
             </li>
 

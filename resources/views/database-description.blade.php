@@ -2,6 +2,41 @@
 
 @section('content')
     <section class="py-4">
+        <h2 class="text-center display-5">Project's Timeline</h2>
+        <div class="container">
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th style="width:20%">Date/Time</th>
+                        <th style="width:20%">Task</th>
+                        <th style="width:30%">Hours</th>
+                        <th style="width:30%">Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>19/1/2023</td>
+                        <td>View and study the problem, check figma</td>
+                        <td>2h</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>29/1/2023</td>
+                        <td>Setup Laravel project, database and back-end</td>
+                        <td>8h</td>
+                        <td>In some Apis, I have not return data for chart Weight/Fat Percentage yet</td>
+                    </tr>
+                    <tr>
+                        <td>30/1/2023</td>
+                        <td>Draw some basic UI/Screen to show some testing data</td>
+                        <td>8h</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+
         <h1 class="text-center display-5">Summarize Database</h1>
 
         <div class="container">
@@ -411,6 +446,23 @@
                 </tbody>
             </table>
 
+        </div>
+
+        <h1 class="text-center display-5">Summarize API</h1>
+
+        <div class="container" id="summary-api">
+            <h2>Api Login</h2>
+            <img src="img/arenttest/api-login.png" class="img-fluid">
+
+            <h2>Api get data for Recommended Page (Without login)</h2>
+            <img src="img/arenttest/api-recommended.png" class="img-fluid">
+
+            <h2>Api get data for Top Page (With login)</h2>
+            <img src="img/arenttest/api-toppage.png" class="img-fluid">
+
+            <h2>Api get data for My Record Page (With login)</h2>
+            <img src="img/arenttest/api-myrecord.png" class="img-fluid">
+            <img src="img/arenttest/api-myrecord2.png" class="img-fluid">
         </div>
     </section>
 @stop
