@@ -3,7 +3,7 @@ You can build this project base on Docker.
 
 ## Prerequisites
 1. Firstly, you need to install Docker
-2. You may be config Docker File Sharing, to include the path of project folder
+2. You should config Docker File Sharing, to include the path of project folder
 
 ## Build
 1. Unzip source code. Then `cd` to project folder `arent-test-proj`
@@ -14,4 +14,5 @@ You can build this project base on Docker.
 
 5. Create the database and migrate: `docker-compose run --rm app php artisan migrate`
 6. Make sample data to test: `docker-compose run --rm app php artisan db:seed --class=DatabaseSeeder`
+8. Generate Docs Swagger: `docker-compose run --rm app php artisan l5-swagger:generate`
 7. Access link `http://localhost:8000`, to check the website
