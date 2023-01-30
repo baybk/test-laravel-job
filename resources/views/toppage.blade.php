@@ -6,7 +6,7 @@
         <div class="row">
         <div class="col-md-5 text-sm-center" style="padding-right: 0;padding-left: 0;">
             <img src="{{asset('img/arenttest/top-img.png')}}" class="img-fluid h-100 w-100" alt="">
-            <div class="d-inline-block text-white" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-size: 0.9rem;"><span>05/21</span> <span style="font-size: 1.2rem">75%</span></div>
+            <div class="d-inline-block text-white" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-size: 0.9rem;"><span>{{ $data['day_now'] }}</span> <span style="font-size: 1.2rem">{{ $data['day_now_percentage'] }}%</span></div>
         </div>
         <div class="col-md-7" style="padding-left: 0;padding-right: 0;">
             <img src="{{asset('img/arenttest/chart.png')}}" class="img-fluid d-none d-md-block" alt="">
@@ -49,50 +49,18 @@
 <section id="dishes">
     <div class="container">
     <div class="row">
+        @foreach($data['meals_data'] as $meal)
         <div class="col-sm-6 col-lg-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-primary px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>05.21.Morning</small>
+            <div class="card">
+                <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
+                <div class="card-img-overlay">
+                    <div class="card-text bg-primary px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
+                        <small>{{ $meal['datetime_at_formatted'] }}.{{ $meal['type_formatted'] }}</small>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-primary px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>05.21.Lunch</small>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-primary px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>05.21.Dinner</small>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-3 pb-2">
-        <div class="card">
-            <img class="card-img" src="{{asset('img/arenttest/dish.png')}}" alt="">
-            <div class="card-img-overlay">
-                <div class="card-text bg-primary px-3 py-1" style="position: absolute; bottom: 0; left: 0; color: #fff;">
-                    <small>05.21.Snack</small>
-                </div>
-            </div>
-        </div>
-        </div>
-    
+        @endforeach    
     </div>
 
     <div class="text-center">

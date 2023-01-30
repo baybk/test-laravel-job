@@ -13,10 +13,13 @@ class ToppageController extends Controller
         
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $rdata = resolve(GetIndexInfoAction::class)->run([]);
-        $data =  $this->sendSuccessWithoutMessage($rdata, 200, true);
+        $user = $request->user();
+        $rdata = resolve(GetIndexInfoAction::class)->run($user->id, []);
+        $rdata =  $this->sendSuccessWithoutMessage($rdata, 200, true);
+        $data = $rdata['data'];
+        // dd($data);
         return view('toppage', compact('data'));
     }
 }

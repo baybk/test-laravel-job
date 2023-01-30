@@ -17,7 +17,7 @@ class MealFactory extends Factory
     {
         return [
             'type' => 1,
-            'user_id' => 1,
+            'user_id' => 2,
             'datetime_at' => $this->faker->dateTimeBetween('-4 days')
         ];
     }

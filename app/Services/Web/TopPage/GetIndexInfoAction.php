@@ -2,12 +2,6 @@
 
 namespace App\Services\Web\TopPage;
 
-use App\Filters\FreewordNameFilter;
-use App\Models\Meal;
-use App\Models\User;
-use App\Packages\Papagroup\L8core\Src\Criteria\FilterCriteria;
-use App\Packages\Papagroup\L8core\Src\Criteria\OrderCriteria;
-use App\Packages\Papagroup\L8core\Src\Criteria\WithRelationsCriteria;
 use App\Repositories\UserRepository;
 use App\Services\Action;
 use App\Services\Web\Meal\ListMealAction;
@@ -22,33 +16,39 @@ class GetIndexInfoAction extends Action
         $this->repository = $repository;
     }
 
-    public function run($data)
+    public function run($userId, $data)
     {
         try {
-            $dayNow = Carbon::now()->toDateString();
+            $dayNow = Carbon::now();
+
+            $filterDataInDay = [
+                'datetime_at' => $dayNow->toDateString(),
+                'user_id' => $userId
+            ];
+            $mealsDataInDay = resolve(ListMealAction::class)->run($filterDataInDay);
+            $percentage = 0;
+            if (count($mealsDataInDay) > 4) {
+                $percentage = 100;
+            } else {
+                $percentage = count($mealsDataInDay) * 25;
+            }
+
             $filterData = [
-                'datetime_at' => $dayNow
+                'user_id' => $userId,
+                'limit' => 8
             ];
             $mealsData = resolve(ListMealAction::class)->run($filterData);
-            return $mealsData;
+
+            $dayNowFormat = $dayNow->format('m/d');
+            $data = [
+                "day_now" => $dayNowFormat,
+                "day_now_percentage" => $percentage,
+                "meals_data" => $mealsData
+            ];
+
+            return $data;
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    private function allowFilters()
-    {
-        return [
-            'name' => FreewordNameFilter::class,
-        ];
-    }
-
-    private function allowOrderableFields()
-    {
-        return [
-            'id',
-            'name',
-            'created_at'
-        ];
     }
 }

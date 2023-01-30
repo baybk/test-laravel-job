@@ -19,10 +19,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Website route
+Route::get('/login', function() {
+    return redirect('/');
+});
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/toppage', [ToppageController::class, 'index'])->name('toppage');
+Route::get('/toppage', [ToppageController::class, 'index'])->name('toppage')->middleware('auth');
 
 Route::get('/', [RecommendedController::class, 'index'])->name('recommended');
 
