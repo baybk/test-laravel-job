@@ -17,13 +17,13 @@
                     </li>
 
                     <li class="nav-item">
-                        <a v-if="false" href="" class="nav-link link-active" target="_blank">Api Docs</a>
-                        <a v-else href="" class="nav-link text-white" target="_blank">Apis Docs</a>
+                        <a v-if="false" href="/api-description" class="nav-link link-active" target="_blank">Api Docs</a>
+                        <a v-else href="/api-description" class="nav-link text-white" target="_blank">Apis Docs</a>
                     </li>
 
                     <li class="nav-item">
-                        <a v-if="false" href="" class="nav-link link-active">Recommended</a>
-                        <a v-else href="" class="nav-link text-white">Recommended</a>
+                        <router-link  v-if="false" to="/"  class="nav-link link-active">Recommended</router-link>
+                        <router-link  v-else to="/" class="nav-link text-white">Recommended</router-link>
                     </li>
                     
                     <li class="nav-item">
