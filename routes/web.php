@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Website route
+Route::get('/', function() {
+    return view('welcome');
+});
 Route::get('/login', function() {
     return redirect('/');
 });
@@ -28,7 +31,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/toppage', [ToppageController::class, 'index'])->name('toppage')->middleware('auth');
 
-Route::get('/', [RecommendedController::class, 'index'])->name('recommended');
+Route::get('/recommended', [RecommendedController::class, 'index'])->name('recommended');
 
 Route::get('/myrecord', [MyrecordController::class, 'index'])->name('myrecord')->middleware('auth');
 
