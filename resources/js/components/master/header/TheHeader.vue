@@ -26,21 +26,21 @@
                         <router-link  v-else to="/" class="nav-link text-white">Recommended</router-link>
                     </li>
                     
-                    <li class="nav-item">
+                    <li v-if="!userIsAuth" class="nav-item">
                         <a href="" class="nav-link text-white" data-toggle="modal" data-target="#loginModal">Login</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li v-if="userIsAuth"  class="nav-item">
                         <a v-if="false" href="" class="nav-link link-active">Top Page</a>
                         <a v-else href="" class="nav-link text-white">Top Page</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li v-if="userIsAuth" class="nav-item">
                         <a v-if="false" href="" class="nav-link link-active">My Record</a>
                         <a v-else href="" class="nav-link text-white">My Record</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link text-white">Logout</a>
+                    <li v-if="userIsAuth" class="nav-item">
+                        <a href="" class="nav-link text-white" @click="logout">Logout</a>
                     </li>
                 </ul>
                 </div>
@@ -50,7 +50,14 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex';
 export default {
-    inject: ['changeSelectedPage', 'selectedPage']
+    inject: ['changeSelectedPage', 'selectedPage'],
+    computed: {
+        ...mapGetters(['userIsAuth'])
+    },
+    methods: {
+        ...mapActions(['logout'])
+    }
 }
 </script>

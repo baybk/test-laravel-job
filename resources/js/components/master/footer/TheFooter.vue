@@ -18,19 +18,20 @@
                 </div>
 
                 <form method="POST" action="">
+                    <p v-if="!isValidated" class="text-red">Login data wrong!!</p>
                     <div class="modal-body">
                         <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" placeholder="Email" name="email" class="form-control">
+                        <input type="text" placeholder="Email" name="email" class="form-control" v-model.trim="email">
                         </div>
                         <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Password" name="password"  class="form-control">
+                        <input type="password" placeholder="Password" name="password"  class="form-control" v-model.trim="password">
                         </div>
                     
                     </div>
                     <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" >Login</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" @click="login" >Login</button>
                     </div>
                 </form>
                 </div>
@@ -43,6 +44,31 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            email: null,
+            password: null,
+            isValidated: true
+        }
+    },
+    methods: {
+        async login() {
+            if (this.email === '' || this.password === '') {
+                this.isValidated = false;
+                return false;
+            }
+
+            const isLogin =  await this.$store.dispatch('login', {
+                email: this.email,
+                password: this.password
+            });
+
+            if (isLogin === true) {
+                console.log('Login success');
+            } else {
+                console.log('Login fail');
+            }
+        }
+    }
 }
 </script>
