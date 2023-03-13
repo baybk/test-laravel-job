@@ -97,7 +97,6 @@ export default {
         }
     },
     beforeMount() {
-        // load data from db
         this.loadData();
     },
     methods: {
@@ -107,9 +106,7 @@ export default {
             .then((response) => {
                 this.isLoading = false;
                 this.isApiError = false;
-                const results = [];
                 const recommended_list = response.data.data.recommended_list;
-                console.log(recommended_list);
                 this.listItems = recommended_list;
             }).catch((error) => {
                 console.log(error);

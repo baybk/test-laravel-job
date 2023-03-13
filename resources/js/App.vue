@@ -35,6 +35,9 @@
                 console.log(pageName)
                 this.selectedPage = pageName;
             }
+        },
+        created() {
+            this.$store.dispatch('tryLogin')
         }
     }
 </script>
