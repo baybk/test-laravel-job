@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import IndexRecommenedPage from './components/recommened/pages/IndexRecommenedPage.vue';
+import IndexTopPage from './components/toppage/IndexTopPage.vue'
 import NotFound from './components/notfound/NotFound.vue'
 
 const route_list = [
     {path: '/', component: IndexRecommenedPage},
+    {path: '/top-page', component: IndexTopPage},
     {path: '/:notFound(.*)', component: NotFound}
 ]
 

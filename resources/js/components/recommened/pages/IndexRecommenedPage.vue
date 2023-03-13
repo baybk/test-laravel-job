@@ -112,7 +112,6 @@ export default {
                 console.log(error);
                 this.isLoading = false;
                 this.isApiError = true;
-                this.getNextVocabulary();
             });
           }
     }
