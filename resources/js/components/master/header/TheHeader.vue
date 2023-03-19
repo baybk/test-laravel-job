@@ -31,8 +31,8 @@
                     </li>
 
                     <li v-if="userIsAuth"  class="nav-item">
-                        <a v-if="false" href="" class="nav-link link-active">Top Page</a>
-                        <a v-else href="" class="nav-link text-white">Top Page</a>
+                        <router-link to="/top-page" v-if="false" href="" class="nav-link link-active">Top Page</router-link>
+                        <router-link to="/top-page" v-else href="" class="nav-link text-white">Top Page</router-link>
                     </li>
 
                     <li v-if="userIsAuth" class="nav-item">
