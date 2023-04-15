@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\DiaryRecord;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 
@@ -22,11 +21,5 @@ class DatabaseSeeder extends Seeder
         Artisan::call('storage:link');
         
         $this->call(UserTableSeeder::class);
-        // $this->call(DishSeeder::class);
-        $this->call(MealSeeder::class);
-        $this->call(BodyRecordSeeder::class);
-        $this->call(ExerciseRecordSeeder::class);
-        $this->call(DiaryRecordSeeder::class);
-        $this->call(RecommendedSeeder::class);
     }
 }

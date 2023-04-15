@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -46,10 +47,11 @@ class LoginController extends Controller
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
+            $userData = new UserResource($user);
             $access_token =  $user->createToken('APPLICATION')->accessToken;
             return $this->sendSuccess(
                 [
-                    'user' => $user,
+                    'user' => $userData,
                     'access_token' => $access_token
                 ],
                 __('auth.login_success')
