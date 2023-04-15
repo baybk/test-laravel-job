@@ -14,3 +14,8 @@ You can build this project base on Docker.
 5. Create the database and migrate: `docker-compose run --rm app php artisan migrate`
 6. Make sample data to test: `docker-compose run --rm app php artisan db:seed --class=DatabaseSeeder`
 
+
+
+## Result
+You can see the result in `screenshots` folder.
+
